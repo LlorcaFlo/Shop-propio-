@@ -2,9 +2,7 @@
 @section('title', 'Usuario')
 @section('body-class', 'profile-page sidebar-collapse')
 @section('content')
-
     @include('admin.partials.page-header')
-
     <div class="container">
         <div class="row my-2">
             <div class="col-lg-8 order-lg-2">
@@ -17,7 +15,8 @@
                         @endif
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route ('users.edit', $user->id ) }}" class="btn btn-success btn-sm" rel="tooltip" title="Editar usuario"><i class="fa fa-edit"></i></a>
+                        <a href="{{ route ('user.edit') }}" class="btn btn-success btn-sm"
+                           rel="tooltip" title="Editar"><i class="fa fa-edit"></i></a>
                     </li>
                     <li class="nav-item">
                         <!-------    BUTTON ELIMINAR   ----------->
@@ -113,7 +112,7 @@
                 </div>
             </div>
             <div class="col-lg-4 order-lg-1 text-center">
-                <img src="{{ asset('img/faces/avatar.jpg') }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                <img src="{{ asset('img/faces/avatar.jpg') }}" class="mx-auto img-fluid rounded-circle w-75 d-block" alt="avatar">
                 <h6 class="mt-2">{{ __('Upload a different photo') }}</h6>
                 <label class="custom-file">
                     <input type="file" id="file" class="custom-file-input">

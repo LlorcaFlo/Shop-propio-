@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
-    
     public function authorize()
     {
         return true;
@@ -14,7 +13,6 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-
         'name' => 'required | min:3',
         'user_name' => 'required | min:3',
         'email' => 'required ',

@@ -1,49 +1,51 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .margen{
-            padding: 40px;
-            border-radius: 20px;
-        }
-        .cabecera div{
-            background-color:grey;
-            color:white;
-            border-radius: 10px;
-            margin: auto;
-            width: 200;
-            text-align: center;
-            padding: 4px;
-
-        }
-        .cabecera h6{
-            text-align: center;
-        }
-        .cabecera h4{
-            float: right;
-            text-align: center;
-            color:rgb(30,144,255);
-            padding: 10px;
-        }
-        .total {
-            float: right;
-            list-style: none;
-            margin: 5px;
-        }
-        table{
-            padding: 4px;
-            text-align: center;
-        }
-    </style>
-</head>
+<html lang="en">
+@include("pdf.partials.style_user")
 <body>
-<div class="margen">
-    <div class="cabecera">
-        <div>Llorca-Shop</div>
-        <h6>Su pedido se ha realizado correctamente el día: {{$cart->order_date->format('d-m-Y')}}</h6>
-        <h4>Ejemplar para el comprador</h4>
-    </div>
-    @include("pdf.partials.factura")
+<div class="container">
+    <table style="margin-left: auto; margin-right: auto" width="550">
+        <tr>
+            <td width="160">
+                &nbsp;
+            </td>
+            <!-- Organization Name / Image -->
+            <td align="right">
+                {{ config ('app.name') }}
+            </td>
+        </tr>
+        <tr valign="top">
+            <td style="font-size:28px;color:#cccccc;">
+                <span class="portador">Factura emitida al comprador</span>
+            </td>
+            <!-- Organization Name / Date -->
+            <td>
+                <br><br>
+                <strong>To:</strong> {{ $user->name }}
+                <br>
+                <strong>Date:</strong> {{ \Carbon\Carbon::now()->format('d/m/Y') }}
+            </td>
+        </tr>
+        <tr valign="top">
+            <!-- Organization Details -->
+            <td style="font-size:9px;">
+                Cliente: {{ $user->name }}<br>
+                Dirección: {{ $user->address }}<br>
+                Correo: {{ $user->email }}<br>
+                Teléfono: {{ $user->phone }}
+
+            </td>
+            <td>
+                <!-- Invoice Info -->
+                <p>
+                    <strong>Vendedor:</strong> {{ config ('app.name') }}<br>
+                    <strong>Nº Factura:</strong> {{rand(1,2000)}}<br>
+                </p>
+
+                <br><br>
+                @include("pdf.partials.factura")
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

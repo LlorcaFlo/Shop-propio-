@@ -8,7 +8,7 @@
 <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
         <!--------   BOTON 'TIENDA'  ------------>
-            <div class="navbar-translate">
+        <div class="navbar-translate">
             <a class="navbar-brand" href="{{ url('/') }}">{{-- <img width="200" height="50" class="d-inline-block align-top" src="{{ asset('img/Llorca-shop-logo.png') }}"> --}}Llorca-Shop</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
@@ -18,14 +18,12 @@
             </button>
         </div>
         <!---         BUSCADOR DE PRODUCTOS              ----->
-        <div class="m-auto w-75 text-center">
-            <div class="nav-item">
-                <form action="{{ route ('search_product') }}">
-                    <input  class="rounded" type="text" placeholder="Nombre del producto" name="query" id="search">
-                    <button type="submit" class="btn btn-primary btn-sm rounded-circle">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
+        <div class="container h-50">
+            <div class="d-flex justify-content-center h-50">
+                    <form action="{{ route ('search_product') }}">
+                        <input class="bg-white text-dark rounded" type="text" name="query" placeholder="{{__('Search...')}}">
+                        <button type="submit" class="btn-sm btn-link border-0 m-0 p-0"><i class="fa fa-search"></i></button>
+                    </form>
             </div>
         </div>
         <div class="collapse navbar-collapse">
@@ -35,7 +33,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
-                <!--------   BOTÓN REGISTER   -------->
+                    <!--------   BOTÓN REGISTER   -------->
                     @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -46,18 +44,19 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ Auth::user()->user_name }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                             <!--------  'DASHBOARD'  ------------>
+                            <a class="dropdown-item" href="{{route('user.index')}}"> Perfil</a>
                             <a class="dropdown-item" href="{{ route ('home') }}">
                                 Dashboard
                             </a>
 
-                            @if( auth()->user ()->admin )
+                        @if( auth()->user ()->admin )
 
-                                <!--------  'GESTIONAR PRODUCTOS'  ------------>
+                            <!--------  'GESTIONAR PRODUCTOS'  ------------>
                                 <a class="dropdown-item" href="{{ route('users.index') }}">
                                     Gestionar usuarios
                                 </a>
@@ -66,7 +65,7 @@
                                     Gestionar productos
                                 </a>
 
-                                    <!--------  'GESTIONAR CATEGORÍAS'  ------------>
+                                <!--------  'GESTIONAR CATEGORÍAS'  ------------>
                                 <a class="dropdown-item" href="{{ route('admin_categories_index') }}">
                                     Gestionar categorías
                                 </a>
@@ -77,7 +76,7 @@
                                 <a class="dropdown-item" href="{{ route('admin_providers_index') }}">
                                     Gestionar compras
                                 </a>
-                            @endif
+                        @endif
 
                         <!--------  LOGOUT  ------------>
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -89,13 +88,11 @@
                                   style="display: none;">
                                 @csrf
                             </form>
-
                         </div>
                     </li>
 
                     <div class="collapse navbar-collapse" id="navbarContent">
-
-                        <!--------   BOTON 'SELECCIONA UN IDOMA'  ------------>
+                        <!--------   BOTON 'SELECCIONA UN IDIOMA'  ------------>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle"
@@ -104,23 +101,20 @@
                                    data-toggle="dropdown"
                                    aria-haspopup="false"
                                    aria-expanded="false">
-                                    {{ __("Selecciona un idioma") }}
+                                    <i class="fa fa-globe"></i>
                                 </a>
-
                                 <!--------   OPCIONES DESPLEGABLE IDIOMA  ------------>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="{{ route('set_language', ['es']) }}">
-                                        {{ __("Español") }}
+                                        {{ __("Spain") }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('set_language', ['en']) }}">
-                                        {{ __("Inglés") }}
+                                        {{ __("English") }}
                                     </a>
                                 </div>
                             </li>
                         </ul>
-
                     </div>
-                    {{--fin prueba desplegable idioma--}}
                 @endguest
             </ul>
         </div>

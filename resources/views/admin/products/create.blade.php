@@ -4,7 +4,7 @@
 @section('content')
 
     <!-------                               VISTA FORM CREATE PRODUCT                                     ----------->
-    @include('admin.partials.page-header')
+    @include('admin.partials.page-header-product')
     <div class="main main-raised">
         <div class="container">
             <div class="section text-center">

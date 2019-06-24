@@ -22,6 +22,8 @@ class PdfCatSendListener
         $pdf->loadView('pdf.order_user', ['user' => $event->user, 'cart' => $event->cart ]);
         $pdf2->loadView('pdf.order_admin', ['user' => $event->user, 'cart' => $event->cart ]);
 
+        //return $pdf->download('pdf.order_user', ['user' => $event->user, 'cart' => $event->cart ]);
+
         Mail::to($event->user)->send(new NewOrder($event->user, $event->cart, $pdf));
 
         foreach ($admins as $admin) 

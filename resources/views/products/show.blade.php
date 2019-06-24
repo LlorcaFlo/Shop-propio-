@@ -4,14 +4,11 @@
 
 
 <!------------------------  VISTA DE UN PRODUCTO CON BOTÓN PARA AÑADIRLO AL CART  ----------------------------------->
-
 @section('content')
-    <div class="page-header header-filter" data-parallax="true"
-         style="background-image: url('{{ asset('img/city-profile.jpg') }}');"></div>
+    @include('admin.partials.page-header-product')
     <div class="main main-raised">
         <div class="profile-content">
             <div class="container">
-
                 <!---------  IMAGEN DEL PRODUCTO ----------->
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto text-center">
@@ -28,7 +25,6 @@
                         @endif
                     </div>
                 </div>
-
                 <!---------  INFO: NOMBRE, CATEGORÍA Y DESCRIPCIÓN DEL PRODUCTO  ----------->
                 <div class="name text-center">
                     <h3 class="title">{{ $product->name }}</h3>
@@ -37,7 +33,6 @@
                         <p>{{ $product->long_description }}</p>
                     </div>
                 </div>
-
                 <!--------- LÓGICA DEL BOTÓN: AÑADIR AL CARRITO // IR AL CARRITO  // NO QUEDAN UNIDADES ----------->
                 @auth
                     @if( ! $productInCart )

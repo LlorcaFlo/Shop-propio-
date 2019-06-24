@@ -14,7 +14,6 @@ class UsersController extends Controller
     {
         //$users = User::paginate(5);
         $users = User::where('id', '!=', auth()->user()->id)->paginate(5);
-
         return view('admin.users.index', compact('users'));
     }
 
@@ -28,7 +27,6 @@ class UsersController extends Controller
     {
 
         $user = new User();
-
         $user->name = $request->get('name');
         $user->user_name = $request->get('user_name');
         $user->email = $request->get('email');

@@ -41,6 +41,7 @@
         .tt-suggestion p {
             margin: 0;
         }
+
     </style>
 @endsection
 @section('content')
@@ -50,12 +51,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="title">{{__('Tu tienda comienza aquí') }}</h1>
+                    <h2 class="title">{{__('Tu tienda comienza aquí') }}</h2>
                     <h4>{{__('Realiza pedidos en línea') }}</h4>
                     <br>
                     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
                        class="btn btn-danger btn-raised btn-lg">
-                        <i class="fa fa-play"></i> {{__('¿Cómo funciona?') }}
+                        <i class="fa fa-play"> </i> {{__('¿Cómo funciona?') }}
                     </a>
                 </div>
             </div>

@@ -4,6 +4,11 @@ use App\Category;
 use Illuminate\Support\Facades\Route;
 
 
+//Usuarios
+Route::get('/user', 'UserController@index')->name('user.index');
+Route::get('/user/edit', 'UserController@edit')->name('user.edit');
+
+
 Route::get ('payment', 'PaypalController@postPayment')->name ('payment');
 Route::get ('payment/status', 'PaypalController@getPaymentStatus')->name ('payment.status');
 
