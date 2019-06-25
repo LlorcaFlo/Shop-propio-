@@ -2,9 +2,7 @@
 @section('title', 'Usuario')
 @section('body-class', 'profile-page sidebar-collapse')
 @section('content')
-
     @include('admin.partials.page-header')
-
     <div class="container">
         <div class="row my-2">
             <div class="col-lg-8 order-lg-2">

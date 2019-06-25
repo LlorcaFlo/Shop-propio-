@@ -1,8 +1,8 @@
 <?php
 
 use App\Category;
+use App\Product;
 use Illuminate\Support\Facades\Route;
-
 
 //Usuarios
 Route::get('/user', 'UserController@index')->name('user.index');
@@ -15,13 +15,13 @@ Route::get ('payment/status', 'PaypalController@getPaymentStatus')->name ('payme
 Route::get('/set_language/{lang}', 'Controller@setLanguage')->name ('set_language');
 
 Route::get ( '/', function () {
-   $categories = Category::has ( 'products' )->get ();
+    $products = Product::all()->random(3);;
+    $categories = Category::has ('products')->get();
    //dd($categories);
-   return view ( 'welcome', compact ( 'categories' ) );
+   return view ( 'welcome', compact ( 'categories','products') );
 });
 
 Auth::routes ();
-
 
 //PDFS
 Route::get('/imprimir', 'PdfController@show')
@@ -60,8 +60,11 @@ Route::post ( '/updateWithModal', 'CartDetailController@updateWithModal')->name 
 
 Route::post ( '/order', 'CartController@update' )->name ('place_order');
 
+
+
+
 Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admin' )->group ( function () {
-   
+
    //Providers
    Route::put ('/providers/products', 'ProductController@purchase')
          ->name('product_purchase');

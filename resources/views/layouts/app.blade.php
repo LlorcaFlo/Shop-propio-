@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 @include ('partials.head')
-
 <body class="@yield('body-class')">
 <!-------------------------- BARRA DE NAVEGACIÓN ----------------------------->
-<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg rounded"
+     color-on-scroll="100" id="sectionsNav">
     <div class="container">
         <!--------   BOTON 'TIENDA'  ------------>
         <div class="navbar-translate">
@@ -18,16 +17,18 @@
             </button>
         </div>
         <!---         BUSCADOR DE PRODUCTOS              ----->
-        <div class="container h-50">
-            <div class="d-flex justify-content-center h-50">
-                    <form action="{{ route ('search_product') }}">
-                        <input class="bg-white text-dark rounded" type="text" name="query" placeholder="{{__('Search...')}}">
-                        <button type="submit" class="btn-sm btn-link border-0 m-0 p-0"><i class="fa fa-search"></i></button>
-                    </form>
+            <div class="container h-100">
+                <form action="{{ route ('search_product') }}">
+                    <div class="d-flex justify-content-center">
+                        <div class="searchbar">
+                            <input class="search_input" type="text" name="query" placeholder="{{__('Search...')}}">
+                            <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>
         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav">
                 <!--------   BOTÓN 'LOGIN'   -------->
                 @guest
                     <li class="nav-item">
@@ -54,17 +55,14 @@
                                 Dashboard
                             </a>
 
-                        @if( auth()->user ()->admin )
-
+                        @if(auth()->user()->admin)
                             <!--------  'GESTIONAR PRODUCTOS'  ------------>
                                 <a class="dropdown-item" href="{{ route('users.index') }}">
                                     Gestionar usuarios
                                 </a>
-
                                 <a class="dropdown-item" href="{{ route('admin_products_index') }}">
                                     Gestionar productos
                                 </a>
-
                                 <!--------  'GESTIONAR CATEGORÍAS'  ------------>
                                 <a class="dropdown-item" href="{{ route('admin_categories_index') }}">
                                     Gestionar categorías
@@ -72,12 +70,10 @@
                                 <a class="dropdown-item" href="{{ route('show_carts_pending') }}">
                                     Gestionar carritos pendientes
                                 </a>
-
                                 <a class="dropdown-item" href="{{ route('admin_providers_index') }}">
                                     Gestionar compras
                                 </a>
                         @endif
-
                         <!--------  LOGOUT  ------------>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -90,7 +86,7 @@
                             </form>
                         </div>
                     </li>
-
+                @endguest
                     <div class="collapse navbar-collapse" id="navbarContent">
                         <!--------   BOTON 'SELECCIONA UN IDIOMA'  ------------>
                         <ul class="navbar-nav ml-auto">
@@ -115,7 +111,6 @@
                             </li>
                         </ul>
                     </div>
-                @endguest
             </ul>
         </div>
     </div>

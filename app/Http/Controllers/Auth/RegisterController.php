@@ -43,10 +43,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-   public function showRegistrationForm(Request $request)
-   {
-      $name = $request->input('name');
-      $email = $request->input('email');
-      return view('auth.register', compact('name', 'email'));
-   }
+    public function showRegistrationForm(Request $request)
+    {
+        $name = $request->input('name');
+        $email = $request->input('email');
+        return view('auth.register', compact('name', 'email'));
+    }
 }

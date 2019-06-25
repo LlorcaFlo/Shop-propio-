@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    
+
     public function index()
     {
         //$users = User::paginate(5);
@@ -19,19 +19,17 @@ class UsersController extends Controller
 
     public function create()
     {
-      return view ('admin.users.create');
+        return view ('admin.users.create');
     }
-
 
     public function store(UserRequest $request)
     {
-
         $user = new User();
         $user->name = $request->get('name');
         $user->user_name = $request->get('user_name');
         $user->email = $request->get('email');
         $user->password = bcrypt($request->get('password'));
-        
+
         $user->save();
 
         return back()->with('info', ['success', 'Se ha creado el usuario']);
@@ -46,7 +44,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        
+
         return view('admin.users.edit', compact('user'));
     }
 

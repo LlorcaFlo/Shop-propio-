@@ -1,25 +1,22 @@
 @extends('layouts.app')
-@section('body-class', 'signup-page')
-
+@section('body-class', 'profile-page sidebar-collapse')
 @section('content')
-    <div class="page-header header-filter"
-         style="background-image: url('{{ asset ('img/bg7.jpg') }}'); background-size: cover; background-position: top center;">
+    <main class="main main-raised" style="background-image: url('{{ asset ('img/bg7.jpg') }}');
+            background-size: cover; background-position: top center;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <div class="row pt-5">
+                <div class="col-lg-4 col-md-6 ml-auto mr-auto mt-5 pt-5">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card card-login">
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
                         {{-- FORMULARIO DE REGISTRO --}}
-
                         <form class="form" method="post" action="{{ route('register') }}">
                             @csrf
                             <div class="card-header card-header-primary text-center">
@@ -33,13 +30,9 @@
                                           <i class="material-icons">face</i>
                                         </span>
                                     </div>
-                                    <input type="text"
-                                           class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                           placeholder="Nombre"
-                                           name="name"
-                                           value="{{ old('name', $name) }}"
-                                           autofocus
-                                    >
+                                    <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                           placeholder="Nombre" @if ($errors->has('name')) placeholder="{{ $errors->first('name') }}" @endif
+                                           name="name" value="{{ old('name', $name) }}" autofocus>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -67,6 +60,10 @@
                                            placeholder="Email"
                                            autofocus
                                     >
+                                    @if ($errors->has('email'))
+                                        {{dd($errors)}}
+                                        <p>{{ $errors->first('email') }}</p>
+                                    @endif
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -131,6 +128,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    @include ('partials.footer')
+    </main>
+    @include('partials.footer')
 @endsection
