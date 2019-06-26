@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('body-class', 'profile-page sidebar-collapse')
+@section('body-class', 'signup-page sidebar-collapse')
 @section('content')
-    <main class="main main-raised" style="background-image: url('{{ asset ('img/bg7.jpg') }}');
+    <main style="background-image: url('{{ asset ('img/bg7.jpg') }}');
             background-size: cover; background-position: top center;">
         <div class="container">
             <div class="row pt-5">
@@ -129,5 +129,5 @@
             </div>
         </div>
     </main>
-    @include('partials.footer')
+
 @endsection

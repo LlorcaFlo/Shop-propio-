@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('body-class', 'signup-page sidebar-collapse')
 @section('content')
-        <main style="background-image: url('{{ asset ('img/bg7.jpg') }}');
-                background-size: cover; background-position: top center;">
+    <div class="page-header header-filter" style="background-image: url('{{ asset ('img/bg7.jpg') }}');
+            background-size: cover; background-position: top center;">
             <div class="container">
                 <div class="row pt-5">
-                    <div class="col-lg-4 col-md-6 ml-auto mr-auto mt-5 pt-5">
+                    <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                         <div class="card card-login">
                             <form class="form" method="post" action="{{ route('login') }}">
                                 @csrf
@@ -59,7 +59,6 @@
                     </div>
                 </div>
             </div>
-        </main>
-    @include ('partials.footer')
+        </div>
 @endsection
 

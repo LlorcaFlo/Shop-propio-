@@ -17,16 +17,16 @@
             </button>
         </div>
         <!---         BUSCADOR DE PRODUCTOS              ----->
-            <div class="container h-100">
-                <form action="{{ route ('search_product') }}">
-                    <div class="d-flex justify-content-center">
-                        <div class="searchbar">
-                            <input class="search_input" type="text" name="query" placeholder="{{__('Search...')}}">
-                            <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
-                        </div>
+        <div class="container h-100">
+            <form action="{{ route ('search_product') }}">
+                <div class="d-flex justify-content-center">
+                    <div class="searchbar">
+                        <input class="search_input" type="text" name="query" placeholder="{{__('Search...')}}">
+                        <button type="submit" class="search_icon"><i class="fa fa-search"></i></button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
+        </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 <!--------   BOTÓN 'LOGIN'   -------->
@@ -87,30 +87,30 @@
                         </div>
                     </li>
                 @endguest
-                    <div class="collapse navbar-collapse" id="navbarContent">
-                        <!--------   BOTON 'SELECCIONA UN IDIOMA'  ------------>
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle"
-                                   href="#"
-                                   id="navbarDropdownMenuLink"
-                                   data-toggle="dropdown"
-                                   aria-haspopup="false"
-                                   aria-expanded="false">
-                                    <i class="fa fa-globe"></i>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!--------   BOTON 'SELECCIONA UN IDIOMA'  ------------>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               id="navbarDropdownMenuLink"
+                               data-toggle="dropdown"
+                               aria-haspopup="false"
+                               aria-expanded="false">
+                                <i class="fa fa-globe"></i>
+                            </a>
+                            <!--------   OPCIONES DESPLEGABLE IDIOMA  ------------>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ route('set_language', ['es']) }}">
+                                    {{ __("Spain") }}
                                 </a>
-                                <!--------   OPCIONES DESPLEGABLE IDIOMA  ------------>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="{{ route('set_language', ['es']) }}">
-                                        {{ __("Spain") }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('set_language', ['en']) }}">
-                                        {{ __("English") }}
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                                <a class="dropdown-item" href="{{ route('set_language', ['en']) }}">
+                                    {{ __("English") }}
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </ul>
         </div>
     </div>
